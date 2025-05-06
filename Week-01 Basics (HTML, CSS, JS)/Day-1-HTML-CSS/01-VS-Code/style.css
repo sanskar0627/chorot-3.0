@@ -1,0 +1,90 @@
+body{
+    background-color: #0d1117;
+}
+#nav{
+    color: azure;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;          
+    padding: 20px 150px;           
+    font-size: 17px;     
+    
+}
+#written{
+    color: azure;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+.toplink{
+    color:azure ;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.right-side input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #0d1117;
+    color: white;
+}
+
+.right-side button {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin: 20px 0;
+}
+
+.primary-btn {
+    background-color: #007acc;
+    color: white;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: white;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.platform-links{
+    display: flex;
+    justify-content: center;
+    color: azure;
+    font-size: 20px;
+}
+.video{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    border-radius:  32px; 
+    padding: 18px;
+    border: 8px solid #007acc;
+    margin:48px auto 0 auto;
+    width: 800px; 
+
+}
+.video video {
+    width: 100%;
+    border-radius: 24px;
+    display: block;
+}
