@@ -23,9 +23,7 @@ Want to explore or use the code? Clone this repository:
 ```bash
 git clone https://github.com/sanskar0627/chorot-3.0
 cd chorot-3.0
-
-
----
+```
 
 ## 🤝 Let's Connect
 
