@@ -24,8 +24,12 @@ Want to explore or use the code? Clone this repository:
 git clone https://github.com/sanskar0627/chorot-3.0
 cd chorot-3.0
 
-##🤝 Let's Connect
+🤝 Let's Connect
 I'm always open to collaborations, feedback, and discussions!
 Feel free to connect with me here:
 
 <p align="left"> <a href="https://x.com/sanskar0627" target="_blank"> <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" /> </a> <a href="https://www.linkedin.com/in/sanskar2003/" target="_blank"> <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /> </a> </p>
+
+
+⭐ If you like this repo, give it a star! It keeps me motivated.
+Happy coding! 🚀
