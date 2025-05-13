@@ -12,6 +12,8 @@ class Rectangle{
         console.log("The colour of the recatangle is..."+this.colour);
     }
 }
+const now=new Date();
+console.log(now.getFullYear());
 const rect1=new Rectangle(5,8,"Red");
 console.log(rect1.area());
 rect1.paint();
