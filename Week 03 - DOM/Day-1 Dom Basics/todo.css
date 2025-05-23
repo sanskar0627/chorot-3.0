@@ -1,0 +1,139 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f4f7f8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #333;
+  padding: 20px;
+}
+
+
+#Tophead {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+div > input[type="text"] {
+  width: 300px;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+div > input[type="text"]:focus {
+  border-color: #3498db;
+}
+
+button {
+  padding: 12px 18px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button + button {
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 12px 20px;
+  background-color: #e74c3c;
+}
+
+button + button:hover {
+  background-color: #c0392b;
+}
+
+#todoList {
+  margin-top: 30px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#todoList > div {
+  background: white;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#todoList > div:hover {
+  background-color: #ecf0f1;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #95a5a6;
+}
+
+#todoList span button {
+  margin-left: 8px;
+  background: transparent;
+  color: #e74c3c;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+  border-radius: 4px;
+}
+
+#todoList span button:hover {
+  color: #c0392b;
+}
+
+#todoList span button:nth-child(2) {
+  color: #2980b9;
+}
+
+#todoList span button:nth-child(2):hover {
+  color: #1c5980;
+}
+
+
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #ddd;
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

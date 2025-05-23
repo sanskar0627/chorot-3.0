@@ -5,36 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="todo.css">
 </head>
 
 <body>
-    <h1>TaskMaster</h1>
+    <h1 id="Tophead">TaskMaster</h1>
     <div>
         <input type="text" placeholder="Add Your ToDo">
         <button onclick="clicked()">Add Todo</button>
+        <button onclick="clearcall()">Clear ALL </button>
     </div>
+    <div id="todoList"></div>
+
+    <footer>
+        &copy; 2025 Sanskar Shukla.
+        <a href="https://www.linkedin.com/in/sanskar2003/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+        <a href="https://github.com/sanskar0627" target="_blank" rel="noopener noreferrer">GitHub</a> |
+        <a href="mailto:sanskar06627@gmail.com">Email</a>
+    </footer>
 
 
-    <script>
-        function deleteTodo(){
-            const eemnt=document.getElementById(index);
-            Element.parentNode.removeChild(Element);
-        }
-        let ctr=1;
-        function clicked() {
-            const input = document.querySelector("input")
-            const value =input.value;
-
-            const newElement=document.createElement("div");
-            newElement.setAttribute("id",ctr);
-            ctr++;
-            newElement.innerHTML="<div>"+value +"<span><button onclick='deleteTodo('+ctr+')'>❌</button></span>";
-            document.querySelector("body").appendChild(newElement);
-        }
-    </script>
+    <script src="todo.js"></script>
 </body>
 
 </html>
