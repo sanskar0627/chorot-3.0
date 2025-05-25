@@ -15,7 +15,7 @@ function clicked() {
 }
 
 function renderTodos() {
-    const todolists = document.querySelector("#todoList");
+    const todolists = document.querySelector("#todoList"); 
     todolists.innerHTML = "";
     for (let i = 0; i < todos.length; i++) {
         const newElement = document.createElement("div");
