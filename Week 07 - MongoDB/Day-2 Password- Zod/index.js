@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
 const { UserModel, TodoModel } = require("./db");
 const app = express();
 app.use(express.json());
@@ -12,25 +13,44 @@ app.post("/signup", async function (req, res) {
     const password = req.body.password;
     const name = req.body.name;
 
-    await UserModel.create({
-        email: email,
-        password: password,
-        name: name
-    });
-    res.json({
-        message: "You are Logged In"
-    });
+    let errorthrown = false;
+    try {
+        const hashedpassword = await bcrypt.hash(password, 5);
+        await UserModel.create({
+            email: email,
+            password: hashedpassword,
+            name: name
+
+        });
+    }
+    catch (e) {
+        res.json({
+            message: "USer A:reday existed"
+        });
+        errorthrown = true;
+    }
+    if (!errorthrown) {
+        res.json({
+            message: "You are signed in "
+        });
+    }
 });
 
 app.post("/signin", async function (req, res) {
     const email = req.body.email;
     const password = req.body.password;
 
-    const user = await UserModel.findOne({
+    const response = await UserModel.findOne({
         email: email,
-        password: password
     });
-    if (user) {
+    if (!response) {
+        res.status(403).json({
+            message: "user does not exist in our db"
+        });
+    }
+    const passwordmatch = await bcrypt.compare(password, response.password);
+
+    if (passwordmatch) {
         const token = jwt.sign({
             id: user._id.toString()
         }, JWT_SECRET);

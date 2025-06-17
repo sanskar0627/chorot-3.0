@@ -1,5 +1,5 @@
- {
-  "name": "day-1-mongodb-(introduction)",
+{
+  "name": "day-2-password--zod",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.16.0"
+    "mongoose": "^8.16.0",
+    "zod": "^3.25.67"
   }
 }
