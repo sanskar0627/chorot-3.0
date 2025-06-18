@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Website</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+<script>
+    async function signUp() {
+        const username = document.getElementById("signup-Username").value;
+        const password = document.getElementById("signup-password").value;
+
+        await axios.post("http://localhost:3000/signUp", {
+            username: username,
+            password: password
+        });
+        alert('You Are Signed In');
+    }
+    async function signIn() {
+        const username = document.getElementById("signin-Username").value;
+        const password = document.getElementById("signin-password").value;
+
+        const response = await axios.post("http://localhost:3000/signIn", {
+            username: username,
+            password: password
+        });
+        localStorage.setItem("token", response.data.token);
+        getuserInformation();
+        alert('You Are Signed In');
+    }
+    async function getuserInformation() {
+        const response = await axios.get("http://localhost:3000/me", {
+            headers: {
+                token: localStorage.getItem("token")
+            }
+        })
+        document.getElementById("information").innerHTML = "Username: " + response.data.username + " Password: " + response.data.password;
+
+    }
+    if (localStorage.getItem("token")) {
+        getuserInformation();
+    }
+    function logout() {
+        localStorage.removeItem("token");
+        document.getElementById("information").innerHTML = "";
+        alert("You have been logged out.");
+    }
+    function checkLoginStatus() {
+        const token = localStorage.getItem("token");
+        if (token) {
+            getuserInformation();
+            document.getElementById("auth-section").style.display="none"
+            document.getElementById("user-section").style.display="block"
+
+        } else {
+            document.getElementById("auth-section").style.display="block"
+            document.getElementById("user-section").style.display="none"
+        }
+    }
+window.onload = checkLoginStatus;
+
+</script>
+
+<body>
+    <div id="auth-section">
+        <h3>Sign UP</h3>
+        <form>
+            <label for="signup-Username">Username</label>
+            <input type="text" id="signup-Username" placeholder="sanskar@g123"><br>
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" placeholder="964573@Gt"><br>
+            <button type="button" onclick="signUp()">Submit</button>
+        </form>
+        <h3>Sign in</h3>
+        <form>
+            <label for="signin-Username">Username</label>
+            <input type="text" id="signin-Username" placeholder="sanskar@g123"><br>
+            <label for="signin-password">Password</label>
+            <input type="password" id="signin-password" placeholder="964573@Gt"><br>
+            <button type="button" onclick="signIn()">Submit</button>
+        </form>
+    </div>
+    <div id="user-section" style="display: none;">
+        <h2>User Information</h2>
+        <div id="information"></div>
+        <div>
+            <button onclick="logout()">Log OUT</button>
+        </div>
+    </div>
+</body>
+
+</html>
