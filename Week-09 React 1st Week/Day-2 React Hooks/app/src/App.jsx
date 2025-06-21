@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
@@ -21,6 +21,14 @@ function Counter() {
   function resetcount() {
     setCount(0);
   }
+  useEffect(function () {
+    setInterval(function () {
+      setCount(function(count){
+        return count+1;
+      });
+    }, 1000);
+  },[]);
+
 
   return <div>
     <h2 id="text"> {count} </h2>
