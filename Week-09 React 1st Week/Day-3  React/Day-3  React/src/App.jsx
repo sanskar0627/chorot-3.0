@@ -1,55 +1,38 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+import { PostComponent } from "./post";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  const postComponents = posts.map(post => <PostComponent
+    name={post.name}
+    subtitle={post.subtitle}
+    time={post.title}
+    image={post.image}
+    description={post.description}
+  />)
+
+  function addPost() {
+    setPosts([...posts, {
+      name: "harkirat",
+      subtitle: "10000 followers",
+      time: "2m ago",
+      image: "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
+      description: "What to know how to win big? Check out how these folks won $6000 in bounties."
+    }])
+  }
 
   return (
-    <div style={{ background: "#dfe6e9", height: "100vh" }}>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{background: "#dfe6e9", height: "100vh", }}>
+      <button onClick={addPost}>Add post</button>
+      <div style={{display: "flex", justifyContent: "center" }}>
         <div>
-          <div>
-            <Postcomponent />
-            <br />
-          </div>
-          <div>
-            <Postcomponent />
-            <br />
-          </div>
+          {postComponents}
         </div>
-
       </div>
-
-    </div >
+    </div>
   )
-}
-const style = { width: 200, backgroundColor: "White", borderRadius: 10, borderColor: "gray", borderWidth: 1, padding: 20,borderStyle: 'solid' }
-function Postcomponent() {
-  return <div style={style}>
-    <div style={{ display: "flex" }}>
-      <img src={"https://www.hindustantimes.com/ht-img/img/2025/05/12/550x309/Prime-Minister-Narendra-Modi--AFP-_1747079003564.jpg"} style={{
-        width: 30,
-        height: 30,
-        borderRadius: 20
-      }} />
-      <div style={{ fontSize: 10, marginLeft: 10 }}>
-        <b>
-          India
-        </b>
-        <div>
-          BJP PARTY , PM OF INDIA
-        </div>
-        <div>1m</div>
-
-      </div>
-
-    </div>
-    <div style={{fontSize:12}}>
-      How to Become World First 30 trillion Economy 
-    </div>
-
-  </div>
 }
 
 export default App
+
