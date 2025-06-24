@@ -33,11 +33,16 @@ function Decrease({setCount}){
     </button>
   </div>
 }
+function CurrentCount({count}){
+  return <div>
+    {count}
+  </div>
+}
 
 function Counter(){
   const [count,setCount]=useState(0);
   return<div>
-    {count}
+    <CurrentCount count={count} />
     <Increase setCount={setCount}/>
     <Decrease setCount={setCount}/>
   </div>
