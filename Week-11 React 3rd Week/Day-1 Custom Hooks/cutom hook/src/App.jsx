@@ -1,32 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { useFetch } from './hooks/useFetch';
 
 function App() {
-  return(
-    <div>
-      <Counter/>
-      <Counter/>
-      <Counter/>
-    </div>
-  )
-}
+  const [currentPost, setCurrentPost] = useState(1);
+  const { findData, loading } = useFetch("https://jsonplaceholder.typicode.com/todos/" + currentPost);
 
-//Coustom HOOK
-function useCounter() {
-  const [count, setCount] = useState(0);
-  function incresecount() {
-    setCount(count + 1);
+  if(loading){
+    return<div>
+      <h3>Load ho raha hai .....</h3>
+      console.log("loading");
+      
+    </div>
   }
-  return {
-    count: count,
-    incresecount: incresecount
-  }
-}
-function Counter(){
-   const { count, incresecount } = useCounter();
-  return (<div>
-    <button on onClick={incresecount}>Increase {count}</button>
-  </div>
+  return (
+    <div>
+      <button onClick={() => setCurrentPost(1)}>1</button>
+      <button onClick={() => setCurrentPost(2)}>2</button>
+      <button onClick={() => setCurrentPost(3)}>3</button>
+      <div>
+        <h3>{findData.title}</h3>
+        <p>ID: {findData.id}</p>
+      </div>
+    </div>
+
   )
 }
 
