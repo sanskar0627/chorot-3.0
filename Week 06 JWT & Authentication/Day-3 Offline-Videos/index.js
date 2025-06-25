@@ -1,10 +1,17 @@
 const express = require("express");
 const { title } = require("framer-motion/client");
 const jwt = require("jsonwebtoken");
+const { z } = require("zod");
+
 const app = express();
 app.use(express.json());
 let users = [];
 const JWT_SECRET = "randomsaksarkapassword";
+
+const UserSchema = z.object({
+    username: z.string().email(),
+    password: z.string().min(6)
+});
 
 function auth(req, res, next) {
     const token = req.headers.token;
@@ -35,26 +42,33 @@ app.post("/signUp", (req, res) => {
 app.post("/signIn", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    const usersfound = users.find(function (u) {
-        if (u.username == username && u.password == password) {
-            return true;
+    const result = UserSchema.safeParse({ username, password });
+    if (result.success) {
+        const usersfound = users.find(function (u) {
+            if (u.username == username && u.password == password) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+
+        if (usersfound) {
+            const token = jwt.sign({
+                username: username
+            }, JWT_SECRET);
+            res.send({ token });
         }
         else {
-            return false;
+            res.status(403).send({
+                message: "Invalid username or Password"
+            })
         }
-    });
-
-    if (usersfound) {
-        const token = jwt.sign({
-            username: username
-        }, JWT_SECRET);
-        res.send({ token });
     }
     else {
-        res.status(403).send({
-            message: "Invalid username or Password"
-        })
+        res.status(403).send("Invalid Format")
     }
+
 });
 app.get("/me", auth, (req, res) => {
 
@@ -129,9 +143,31 @@ app.delete("/todos/:index", auth, (req, res) => {
         return res.status(400).json({ message: "Invalid todo index" });
     }
 
-    user.todos.splice(index, 1); // remove the todo at that index
+    user.todos.splice(index, 1);
     res.json({ message: "Todo deleted successfully" });
 });
+function verifyDecode(token) {
+    const deccodeddata = jwt.decode(token);
+    if (deccodeddata) {
+        return true;
+    }
+    else {
+        return false;
+    }
 
+}
+function verifyToken(token) {
+    try {
+        const verifydata = jwt.verify(token, JWT_SECRET);
+        if (verifydata) {
+            return true;
+        }
+    }
+
+    catch (error) {
+        return false;
+    }
+
+}
 
 app.listen(3000);
