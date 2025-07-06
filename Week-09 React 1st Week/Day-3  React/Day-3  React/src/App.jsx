@@ -7,7 +7,7 @@ function App() {
   const postComponents = posts.map(post => <PostComponent
     name={post.name}
     subtitle={post.subtitle}
-    time={post.title}
+    time={post.time}
     image={post.image}
     description={post.description}
   />)
@@ -23,16 +23,24 @@ function App() {
   }
 
   return (
-    <div style={{background: "#dfe6e9", height: "100vh", }}>
-      <button onClick={addPost}>Add post</button>
-      <div style={{display: "flex", justifyContent: "center" }}>
-        <div>
-          {postComponents}
-        </div>
-      </div>
+    <div
+      style={{
+        background: "#dfe6e9",
+        height: "100vh",
+        display: "flex",             
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",     
+      }}
+    >
+      <button onClick={addPost} style={{ marginBottom: "20px" }}>
+        Add post
+      </button>
+      <div>{postComponents}</div>
     </div>
-  )
+  );
 }
+
 
 export default App
 

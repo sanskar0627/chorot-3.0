@@ -1,39 +1,38 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import './App.css'
 
 function App() {
-  return <>
-    <div>
-      <LightBulb />
-    </div>
-  </>
+  return <div>
+    <LightBulb />
+  </div>
 }
 
 function LightBulb() {
-  const [bulbon, setBulbOn] = useState(true);
-  return <>
-    <div>
-      <BubleState bulbon={bulbon} />
-      <ToggleBubleState setBulbOn={setBulbOn} bulbon={bulbon} />
-    </div>
-  </>
-}
+  const [bulbOn, setBulbOn] = useState(true)
 
-function BubleState({ bulbon }) {
-  //const [bulbon, setBulbOn] = useState(true);
   return <div>
-    {
-      bulbon ? "bulb On" : "Bulb OFF"
-    }
+    <BulbState bulbOn={bulbOn} />
+    <ToggleBulbState bulbOn={bulbOn} setBulbOn={setBulbOn} />
   </div>
 }
 
-function ToggleBubleState({setBulbOn}) {
-  function  toggle(){
-    setBulbOn(currentState=>!currentState)
+function BulbState({bulbOn}) {
+  return <div>
+    {bulbOn ? "Bulb on" : "Bulb off"}
+  </div>
+}
+
+function ToggleBulbState({bulbOn, setBulbOn}) {
+
+  function toggle() {
+    // setBulbOn(currentState => !currentState)
+    setBulbOn(!bulbOn)
+    
   }
+
   return <div>
-    <button onClick={toggle}>Toggle the Bulb </button>
+    <button onClick={toggle}>Toggle the bulb</button>
   </div>
 }
+
 export default App

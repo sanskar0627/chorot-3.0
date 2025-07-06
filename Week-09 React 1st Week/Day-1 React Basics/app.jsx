@@ -5,8 +5,15 @@ function Counter() {
 
   return (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <Button count={count} setCount={setCount} ></Button>
     </div>
   );
 }
+function Button(props) {
+    function onButtonClick() {
+    props.setCount(props.count + 1);
+  }
+  return <button onClick={onButtonClick}>Counter {props.count}</button>
+
+}
+
