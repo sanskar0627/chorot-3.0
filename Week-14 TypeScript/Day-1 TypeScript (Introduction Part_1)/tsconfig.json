@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./day1typescriptignore",
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
