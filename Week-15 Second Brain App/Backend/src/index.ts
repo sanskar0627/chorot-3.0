@@ -1,9 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import { UserModel } from "./db";
+import { ContentModel, UserModel } from "./db";
 import dotenv from "dotenv";
+import {useMiddleware} from  './middleware';
 dotenv.config();
+
 const jwtSecret = process.env.JWT_SECRET_KEY;
 if (!jwtSecret) {
   throw new Error("JWT_SECRET_KEY is missing in environment variables");
@@ -52,8 +54,29 @@ app.post("/api/v1/signin", async (req, res) => {
   }
 });
 
-app.post("/api/v1/content", (req, res) => {});
-app.get("/api/v1/content", (req, res) => {});
+app.post("/api/v1/content", useMiddleware, async(req, res) => {
+  const link=req.body.link;
+  const type=req.body.type;
+  await ContentModel.create({
+    link,
+    type,
+    //@ts-ignore
+    userid:req.userId,
+    tags:[]
+  })
+  res.json({
+    message:"Content Added"
+  })
+});
+
+app.get("/api/v1/content", useMiddleware, async(req, res) => {
+  //@ts-ignore
+  const userId=req.userId;
+  const content=await ContentModel.find({userid:userId}).populate("userid","username")
+  res.json({
+    content
+  })
+});
 
 app.delete("/api/v1/content", (req, res) => {});
 
