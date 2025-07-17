@@ -4,3 +4,4 @@ node_modules/
 day1typescriptignore/
 day2typscriptjsfolder/
 day3typscriptjsfolder/
+dist/
