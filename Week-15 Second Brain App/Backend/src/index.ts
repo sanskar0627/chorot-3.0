@@ -78,7 +78,17 @@ app.get("/api/v1/content", useMiddleware, async(req, res) => {
   })
 });
 
-app.delete("/api/v1/content", (req, res) => {});
+app.delete("/api/v1/content",useMiddleware,async (req, res) => {
+  const contentId =req.body.contentId;
+  await ContentModel.deleteMany({
+    contentId,
+    //@ts-ignore
+    userid:req.userId
+  })
+  res.json({
+    message:"Deleted"
+  })
+});
 
 app.post("/api/v1/brain/share", (req, res) => {});
 
