@@ -1,7 +1,4 @@
-import type { IconProps } from "./Iconprps.ts";
-import { iconsizeVariants } from "./Iconprps.ts";
-
-export const PlusIcon = (props: IconProps) => {
+export function PlusIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +6,7 @@ export const PlusIcon = (props: IconProps) => {
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      className={iconsizeVariants[props.size]}
+      className="size-5"
     >
       <path
         stroke-linecap="round"
@@ -18,4 +15,4 @@ export const PlusIcon = (props: IconProps) => {
       />
     </svg>
   );
-};
+}
