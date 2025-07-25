@@ -1,0 +1,17 @@
+{
+  "name": "day-1-sql-databases-(introduction)-part-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -b && node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/pg": "^8.15.4",
+    "pg": "^8.16.3"
+  }
+}
