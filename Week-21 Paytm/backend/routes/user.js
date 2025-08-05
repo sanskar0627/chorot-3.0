@@ -4,7 +4,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { User, Account } = require("../db");
 const bcrypt = require("bcrypt");
-const { authMiddleware } = require("../middleware")
+const authMiddleware = require("../middleware");
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -86,10 +86,10 @@ router.post("/signin", async (req, res) => {
     });
 })
 // update user info 
-const updateBody = z.object({
-    password: z.string().optional(),
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
+const updateBody = zod.object({
+    password: zod.string().optional(),
+    firstname: zod.string().optional(),
+    lastname: zod.string().optional(),
 });
 
 router.put("/", authMiddleware, async (req, res) => {
